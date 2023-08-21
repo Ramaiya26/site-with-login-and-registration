@@ -33,18 +33,20 @@ a{
     justify-content: space-between;
 }
 
-.nav_item{
+.nav_logo{
+    font-size: 25px;
+}
+
+.nav_item {
     column-gap: 25px;
 }
+
 .nav_link,
 .nav_logo,
 .button{
     color: #fff;
 }
-.nav_logo{
-    font-size: 25px;
 
-}
 .nav_link:hover{
     color:#d9d9d9;
 }
@@ -67,22 +69,51 @@ a{
     background-size: cover;
     background-position: center;
 }
-
+.home::before{
+    content: '';
+    position: absolute;
+    height:100% ;
+    width: 100%;
+    background-color: 0,0,0,0.6;
+    z-index: 100;
+    opacity: 0;
+    pointer-events:none;
+    transition: all 0.5s ease-out;
+}
+.home .home.show{
+    opacity: 1;
+    pointer-events:auto;
+}
 .form_container{
     position:absolute;
     max-width: 320px;
     width:100%;
     top:50%;
     left:50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%)scale(1.2);
     z-index:101;
     background: #fff;
     padding: 25px;
     border-radius: 12px;
     box-shadow: rgba(0,0,0,0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s ease-out;
+}
+.home.show .form_container{
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%,-50%)scale(1);
+
 }
 .signup_form{
     display: none;
+}
+.form_container.active .signup_form{
+    display: block;   
+}
+.form_container.active .login_form{
+    display: none;   
 }
 
 .form_close{
@@ -144,6 +175,7 @@ a{
 .input_box i.pw_hide{
     right:0;
     font-size: 18px;
+    cursor: pointer;
 
 }
 
